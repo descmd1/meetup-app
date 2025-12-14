@@ -13,6 +13,8 @@ import Notification, { useNotification } from './components/Notification';
 import { useSocket } from './hooks/useSocket';
 import './styles/enhancements.css';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:5000';
+
 const App = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -40,10 +42,10 @@ const App = () => {
       
       // Fetch current user info and all users
       Promise.all([
-        fetch("http://localhost:5000/api/user/me", {
+        fetch(`${BASE_URL}/api/user/me`, {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        fetch("http://localhost:5000/api/user/all", {
+        fetch(`${BASE_URL}/api/user/all`, {
           headers: { Authorization: `Bearer ${token}` }
         })
       ])

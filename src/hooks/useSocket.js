@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import io from 'socket.io-client';
 
-export const useSocket = (serverUrl = 'http://localhost:5000') => {
+export const useSocket = (serverUrl = 'https://meetup-api-jyqs.onrender.com') => {
   const [socket, setSocket] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const [onlineUsers, setOnlineUsers] = useState([]);
